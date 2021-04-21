@@ -434,8 +434,9 @@ class InnerDrawerState extends State<InnerDrawer>
 
     final Widget scaffoldChild = Stack(
       children: <Widget?>[widget.scaffold, invC != null ? invC : null]
-          .whereType<Widget>()
-          .toList(),
+          .where((a) => a != null)
+          .toList()
+          .cast<Widget>(),
     );
 
     Widget container = Container(
@@ -618,7 +619,7 @@ class InnerDrawerState extends State<InnerDrawer>
                   ///Trigger
                   _trigger(AlignmentDirectional.centerStart, _leftChild),
                   _trigger(AlignmentDirectional.centerEnd, _rightChild),
-                ].whereType<Widget>().toList(),
+                ].where((a) => a != null).toList().cast<Widget>(),
               ),
             ),
           ),
